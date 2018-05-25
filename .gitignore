@@ -21,8 +21,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-[Oo]ut/*.dll
-[Oo]ut/*.xml
+/[Oo]ut/*.dll
+/[Oo]ut/*.xml
 
 # Visual Studio 2015 cache/options directory
 .vs/
