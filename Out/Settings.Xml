@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AL7_Class_Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <FileNameKMR>C:\Games\KaM Remake\KaM_Remake.exe</FileNameKMR>
-  <FNInstallerKMR>Install KAM Remake.exe</FNInstallerKMR>
-  <KMRSite>http://www.kamremake.com/download/</KMRSite>
-  <AutoInst_DIR>C:\Games\KAM Remake</AutoInst_DIR>
-</AL7_Class_Settings>
