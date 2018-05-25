@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace KAM_Remake_Launcher
 {
-    public partial class frmVerGame : Form
+    public partial class AL7_frmVerGame : Form
     {
         public DialogResult ShowDialog_VerGame(string aCaption, string aText, string aYesBtn, string aNoBtn)
         {
+            this.BackgroundImage = Image.FromFile(Application.StartupPath + @"\data\img\Dialogs.png");
             lblCaption.Text = aCaption;
             lblText.Text = aText;
             btnYes.Text = aYesBtn;
@@ -20,7 +21,7 @@ namespace KAM_Remake_Launcher
             return ShowDialog();
         }
 
-        public frmVerGame()
+        public AL7_frmVerGame()
         {
             InitializeComponent();
         }

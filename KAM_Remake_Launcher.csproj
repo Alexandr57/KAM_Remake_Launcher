@@ -70,26 +70,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class_Settings.cs" />
-    <Compile Include="frmMain.cs">
+    <Compile Include="AL7_Class_Settings.cs" />
+    <Compile Include="AL7_frmDownloadProcess.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="AL7_frmDownloadProcess.Designer.cs">
+      <DependentUpon>AL7_frmDownloadProcess.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVerGame.cs">
+    <Compile Include="AL7_frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVerGame.Designer.cs">
-      <DependentUpon>frmVerGame.cs</DependentUpon>
+    <Compile Include="AL7_frmMain.Designer.cs">
+      <DependentUpon>AL7_frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AL7_frmVerGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AL7_frmVerGame.Designer.cs">
+      <DependentUpon>AL7_frmVerGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="AL7_frmDownloadProcess.resx">
+      <DependentUpon>AL7_frmDownloadProcess.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVerGame.resx">
-      <DependentUpon>frmVerGame.cs</DependentUpon>
+    <EmbeddedResource Include="AL7_frmMain.resx">
+      <DependentUpon>AL7_frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AL7_frmVerGame.resx">
+      <DependentUpon>AL7_frmVerGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

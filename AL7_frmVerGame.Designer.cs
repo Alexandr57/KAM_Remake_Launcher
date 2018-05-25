@@ -1,6 +1,6 @@
 ﻿namespace KAM_Remake_Launcher
 {
-    partial class frmVerGame
+    partial class AL7_frmVerGame
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerGame));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AL7_frmVerGame));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNo = new System.Windows.Forms.Button();
             this.btnYes = new System.Windows.Forms.Button();
@@ -103,12 +103,11 @@
             this.lblText.Size = new System.Drawing.Size(360, 98);
             this.lblText.TabIndex = 2;
             // 
-            // frmVerGame
+            // AL7_frmVerGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(360, 397);
             this.ControlBox = false;
             this.Controls.Add(this.lblText);
@@ -117,7 +116,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmVerGame";
+            this.Name = "AL7_frmVerGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmVerGame";
             this.flowLayoutPanel1.ResumeLayout(false);
