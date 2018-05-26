@@ -103,6 +103,9 @@
     <EmbeddedResource Include="AL7_frmMain.resx">
       <DependentUpon>AL7_frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AL7_frmManageCampaigns.resx">
+      <DependentUpon>AL7_frmManageCampaigns.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AL7_frmVerGame.resx">
       <DependentUpon>AL7_frmVerGame.cs</DependentUpon>
     </EmbeddedResource>
