@@ -83,6 +83,12 @@
     <Compile Include="AL7_frmMain.Designer.cs">
       <DependentUpon>AL7_frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="AL7_frmManageCampaigns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AL7_frmManageCampaigns.Designer.cs">
+      <DependentUpon>AL7_frmManageCampaigns.cs</DependentUpon>
+    </Compile>
     <Compile Include="AL7_frmVerGame.cs">
       <SubType>Form</SubType>
     </Compile>
