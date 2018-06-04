@@ -234,6 +234,7 @@ namespace KAM_Remake_Launcher
                 btnStartKMR.Text = "Запустить KAM Remake";
                 btnStartKMR.Tag = 1;
                 btnStartOtherEditor.Enabled = true;
+                btnManageCampaigns.Enabled = true;
             }
             else
             {
@@ -512,6 +513,12 @@ namespace KAM_Remake_Launcher
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             WriteXml();
+        }
+
+        private void btnManageCampaigns_Click(object sender, EventArgs e)
+        {
+            var FrmManageCampaigns = new AL7_frmManageCampaigns();
+            FrmManageCampaigns.ShowDialog_ManageCampaigns("Управление кампаниями", Settings);
         }
     }
 }

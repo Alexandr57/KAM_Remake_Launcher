@@ -116,7 +116,7 @@
             this.btnStartKMR.Location = new System.Drawing.Point(170, 24);
             this.btnStartKMR.Name = "btnStartKMR";
             this.btnStartKMR.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnStartKMR.Size = new System.Drawing.Size(400, 48);
+            this.btnStartKMR.Size = new System.Drawing.Size(400, 28);
             this.btnStartKMR.TabIndex = 5;
             this.btnStartKMR.Text = "Запустить KAM Remake";
             this.btnStartKMR.UseVisualStyleBackColor = false;
@@ -138,7 +138,7 @@
             this.btnStartOtherEditor.Location = new System.Drawing.Point(170, 104);
             this.btnStartOtherEditor.Name = "btnStartOtherEditor";
             this.btnStartOtherEditor.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnStartOtherEditor.Size = new System.Drawing.Size(400, 48);
+            this.btnStartOtherEditor.Size = new System.Drawing.Size(400, 28);
             this.btnStartOtherEditor.TabIndex = 12;
             this.btnStartOtherEditor.Text = "Запустить другие редакторы";
             this.btnStartOtherEditor.UseVisualStyleBackColor = false;
@@ -249,7 +249,7 @@
             this.btnStartKAM.Location = new System.Drawing.Point(170, 174);
             this.btnStartKAM.Name = "btnStartKAM";
             this.btnStartKAM.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnStartKAM.Size = new System.Drawing.Size(400, 48);
+            this.btnStartKAM.Size = new System.Drawing.Size(400, 28);
             this.btnStartKAM.TabIndex = 14;
             this.btnStartKAM.Text = "Запустить KAM";
             this.btnStartKAM.UseVisualStyleBackColor = false;
@@ -267,10 +267,11 @@
             this.btnManageCampaigns.Location = new System.Drawing.Point(170, 230);
             this.btnManageCampaigns.Name = "btnManageCampaigns";
             this.btnManageCampaigns.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnManageCampaigns.Size = new System.Drawing.Size(400, 48);
+            this.btnManageCampaigns.Size = new System.Drawing.Size(400, 28);
             this.btnManageCampaigns.TabIndex = 15;
             this.btnManageCampaigns.Text = "Управление кампаниями";
             this.btnManageCampaigns.UseVisualStyleBackColor = false;
+            this.btnManageCampaigns.Click += new System.EventHandler(this.btnManageCampaigns_Click);
             // 
             // AL7_frmMain
             // 
