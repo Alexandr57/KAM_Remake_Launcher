@@ -7,10 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Media;
-using AngleSharp.Parser.Html;
-using System.Net;
 using Microsoft.Win32;
-using System.Xml.Serialization;
 using System.IO;
 
 
@@ -18,89 +15,33 @@ namespace KAM_Remake_Launcher
 {
     public partial class AL7_frmMain : Form
     {
-        //Имя файла настроек
-        public string XMLFileName = "Settings.Xml";
+        AL7_Class_Additional Additional;
 
-        //Задержка перед стартом анимации 100 = 1 секунде если брать в расщет интервал 10
-        const int DelayStart = 150;
-
-        //Интерал таймера 1000 = 1 секунда. Каждые 10 милисекунд
-        const int cTick = 10;
-
-        //Переменная содержащие количество пройденных тиков через заданный интервал таймера
+        /// <summary>
+        /// Переменная содержащие количество пройденных тиков через заданный интервал таймера
+        /// </summary>
         string Tick;
 
-        //Переменная индекса анимации
+        /// <summary>
+        /// Переменная индекса анимации
+        /// </summary>
         byte idxAnim;
 
-        //Папка с расположением KAM Remake
-        string PathKMR;
-
-        //Переменная класса с настройкми
-        AL7_Class_Settings Settings = new AL7_Class_Settings();
-
-        //Запись настроек в файл
-        public void WriteXml()
-        {
-            XmlSerializer ser = new XmlSerializer(typeof(AL7_Class_Settings));
-            TextWriter writer = new StreamWriter(XMLFileName);
-            ser.Serialize(writer, Settings);
-            writer.Close();
-        }
-
-        //Чтение настроек из файла
-        public void ReadXml()
-        {
-            if (File.Exists(XMLFileName))
-            {
-                XmlSerializer ser = new XmlSerializer(typeof(AL7_Class_Settings));
-                TextReader reader = new StreamReader(XMLFileName);
-                Settings = ser.Deserialize(reader) as AL7_Class_Settings;
-                reader.Close();
-            }
-            else { }
-        }
-
-        //Воспроизведение звука WAV
-        void PlaySE(string aFileName)
-        {
-            SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation = aFileName;
-            sp.LoadAsync();
-            sp.Play();
-        }
-
-        //Получение новой версии KAM Remake из сайта
-        string GetNewVersionKMR()
-        {
-            string html;
-            using (var webClient = new WebClient())
-            {
-                webClient.Encoding = Encoding.UTF8;
-                webClient.Headers.Add(HttpRequestHeader.UserAgent, ".NET Application");
-                html = webClient.DownloadString(Settings.KMRSite);
-            }
-            var parser = new HtmlParser();
-            var doc = parser.Parse(html);
-
-            var text = doc.QuerySelector(".entry-content > p:nth-child(5) > strong");
-
-            return text.TextContent.Substring(text.TextContent.ToLower().IndexOf("kam remake ") + 11, 5);
-        }
-
-        //Метод установки KAM Remake
-        void InstallKMR(bool aAutoInstall)
-        {
-            System.Diagnostics.Process processInstallerKMR = new System.Diagnostics.Process();
-            //processInstallerKMR
-        }
-
-        //Переменная запрета запуска 2х программ/игр
+        /// <summary>
+        /// Переменная запрета запуска 2х программ/игр
+        /// </summary>
         bool boolBtnStartGameProcess;
-        //Кнопка которая становится неактивной
+
+        /// <summary>
+        /// Кнопка которая становится неактивной при запуске KAM или KMR
+        /// </summary>
         Button btnStartGameProcess;
 
-        //Запуск игры
+        /// <summary>
+        /// Запуск игры
+        /// </summary>
+        /// <param name="aFileNameGame">Имя файла запускаемой игры/программы</param>
+        /// <param name="aArguments">Параметры запуска</param>
         void StartGame(string aFileNameGame, string aArguments = "")
         {
             System.Diagnostics.Process processStartGame = new System.Diagnostics.Process()
@@ -127,58 +68,10 @@ namespace KAM_Remake_Launcher
             processStartGame.Start();
         }
 
-        //Проверка на то что игра является KAM Remake
-        bool CheckFNKMR(string aFileNameKMR)
-        {
-            return ((File.Exists(aFileNameKMR) == true)
-                    && (File.Exists(Path.GetDirectoryName(aFileNameKMR) + @"\KM_TextIDs.inc") == true)
-                    && (File.Exists(Path.GetDirectoryName(aFileNameKMR) + @"\libzplay.dll") == true)
-                    && (Directory.Exists(Path.GetDirectoryName(aFileNameKMR) + @"\Campaigns") == true)
-                    && (Directory.Exists(Path.GetDirectoryName(aFileNameKMR) + @"\data") == true));
-        }
-
-        //Проверка на наличия лицензия игры и по воззможности получения папки с игрой
-        bool CheckLcenseKMR(out string outFNKMR)
-        {
-            var b = false;
-            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
-            using (var key = hklm.OpenSubKey(@"SOFTWARE\JOYMANIA Entertainment\KnightsandMerchants TPR"))
-            {
-                b = (key.GetValue("Version") != null) && (key.GetValue("RemakeVersion") != null);
-
-                try
-                {
-                    outFNKMR = key.GetValue("RemakeDIR").ToString() + @"\" + Settings.FNKMR;
-                }
-                catch
-                {
-                    outFNKMR = "";
-                }
-            }
-            return b;
-        }
-
-        //Получение версии KAM Remake
-        string GetVersionKMR()
-        {
-            var TextVer = "";
-            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
-            using (var key = hklm.OpenSubKey(@"SOFTWARE\JOYMANIA Entertainment\KnightsandMerchants TPR"))
-            {
-                try
-                {
-                    TextVer = key.GetValue("RemakeVersion").ToString();
-                }
-                catch
-                {
-                    TextVer = "???";
-                }
-            }
-
-            return TextVer;
-        }
-
-        //Получения имени файла KAM Remake
+        /// <summary>
+        /// Получения имени файла KAM Remake
+        /// </summary>
+        /// <returns>Возвращает истину если игра указана и указана верно</returns>
         bool GetFileNameKMR()
         {
             OpenFileDialog ofdKMR = new OpenFileDialog()
@@ -191,9 +84,9 @@ namespace KAM_Remake_Launcher
             {
                 if (File.Exists(ofdKMR.FileName))
                 {
-                    if (CheckFNKMR(ofdKMR.FileName))
+                    if (Additional.CheckFNKMR(ofdKMR.FileName))
                     {
-                        Settings.FileNameKMR = ofdKMR.FileName;
+                        Additional.Settings.FileNameKMR = ofdKMR.FileName;
                         return true;
                     }
                     else return false;
@@ -201,27 +94,6 @@ namespace KAM_Remake_Launcher
                 else return false;
             }
             else return false;
-        }
-
-        //Получение оригинальной игры
-        bool GetKAMFileName()
-        {
-            var b = false;
-            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
-            using (var key = hklm.OpenSubKey(@"SOFTWARE\JOYMANIA Entertainment\KnightsandMerchants TPR"))
-            {
-                try
-                {
-                    Settings.FileNameKAM = key.GetValue("DIR").ToString() + @"\" + Settings.FNKAM;
-                    b = true;
-                }
-                catch
-                {
-                    Settings.FileNameKAM = "";
-                }
-                
-            }
-            return b;
         }
 
 
@@ -265,31 +137,31 @@ namespace KAM_Remake_Launcher
 
         bool SetPathKMR()
         {
-            btnStartKAM.Enabled = GetKAMFileName();
+            btnStartKAM.Enabled = Additional.GetFileNameKAM();
 
-            if (CheckFNKMR(Settings.FileNameKMR) == true)
+            if (Additional.CheckFNKMR(Additional.Settings.FileNameKMR) == true)
             {
-                lblKMRVer.Text = "Версия KAM Remake: " + GetVersionKMR();
+                lblKMRVer.Text = "Версия KAM Remake: " + Additional.GetVersionKMR();
                 ReGameElements(true);
                 return true;
             }
 
-            var FileNameKMR = Settings.FileNameKMR;
+            var FileNameKMR = Additional.Settings.FileNameKMR;
 
 
-            if (CheckLcenseKMR(out FileNameKMR) == true)
+            if (Additional.CheckLcenseKMR(out FileNameKMR) == true)
             {
-                lblKMRVer.Text = "Версия KAM Remake: " + GetVersionKMR();
-                if (CheckFNKMR(FileNameKMR) == true)
+                lblKMRVer.Text = "Версия KAM Remake: " + Additional.GetVersionKMR();
+                if (Additional.CheckFNKMR(FileNameKMR) == true)
                 {
-                    Settings.FileNameKMR = FileNameKMR;
+                    Additional.Settings.FileNameKMR = FileNameKMR;
                     ReGameElements2(true);
                     return true;
                 }
                 else
                 {
-                    var FrmVerGame = new AL7_frmVerGame();
-                    if (FrmVerGame.ShowDialog_VerGame("Директория игры не найдена", "У вас лицензия, но папку с игрой найти не удалось!\r\nХотите указать папку с игрой?", "Да", "Нет") == DialogResult.Yes)
+                    var FrmVerGame = new AL7_frmMessageBox();
+                    if (FrmVerGame.ShowMyDialog("Директория игры не найдена", "У вас лицензия, но папку с игрой найти не удалось!\r\nХотите указать папку с игрой?", "Да", "Нет") == DialogResult.Yes)
                     {
                         if (GetFileNameKMR() == true)
                         {
@@ -312,8 +184,8 @@ namespace KAM_Remake_Launcher
             }
             else
             {
-                var FrmVerGame = new AL7_frmVerGame();
-                if (FrmVerGame.ShowDialog_VerGame("Директория игры не найдена", "У нет лицензии!\r\nХотите указать папку с игрой?", "Да", "Нет") == DialogResult.Yes)
+                var FrmVerGame = new AL7_frmMessageBox();
+                if (FrmVerGame.ShowMyDialog("Директория игры не найдена", "У вас нет лицензии или игра не установленна!\r\nХотите указать папку с игрой?", "Да", "Нет") == DialogResult.Yes)
                 {
                     if (GetFileNameKMR() == true)
                     {
@@ -325,6 +197,7 @@ namespace KAM_Remake_Launcher
                     {
                         lblKMRVer.Text = "Игра не найдена!";
                         MessageBox.Show("Игра указана неверно!", "Директория игры не найдена", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(0);
                         ReGameElements(false);
                         return false;
                     }
@@ -332,6 +205,7 @@ namespace KAM_Remake_Launcher
                 else
                 {
                     ReGameElements(false);
+                    Environment.Exit(0);
                     return false;
                 }
             }
@@ -360,6 +234,10 @@ namespace KAM_Remake_Launcher
             btnStartKMR.Location = new Point((this.Width / 2) - (btnStartKMR.Width / 2), btnStartKAM.Top + btnStartKAM.Height + 8);
             btnStartKMR.BringToFront();
 
+            btnUpdateKMR.Parent = pic_Mask;
+            btnUpdateKMR.Location = new Point((this.Width / 2) - (btnUpdateKMR.Width / 2), pic.Height - btnUpdateKMR.Height - 18);
+            btnUpdateKMR.BringToFront();
+
             btnStartOtherEditor.Parent = pic_Mask;
             btnStartOtherEditor.Location = new Point((this.Width / 2) - (btnStartOtherEditor.Width / 2), btnStartKMR.Top + btnStartKMR.Height + 8);
             btnStartOtherEditor.BringToFront();
@@ -385,16 +263,16 @@ namespace KAM_Remake_Launcher
 
             boolBtnStartGameProcess = true;
 
-            ReadXml();
+            Additional = new AL7_Class_Additional(Application.StartupPath);
 
             ReElements();
 
             Tick = "0";
             idxAnim = 0;
-            tmrAnim.Interval = cTick;
+            tmrAnim.Interval = Additional.Settings.cTick;
 
             if (SetPathKMR() == true)
-                PathKMR = Path.GetDirectoryName(Settings.FileNameKMR);
+                Additional.PathKMR = Path.GetDirectoryName(Additional.Settings.FileNameKMR);
 
             tmrAnim.Start();
         }
@@ -414,12 +292,12 @@ namespace KAM_Remake_Launcher
 
             if (idxAnim == 0)
             {
-                PlaySE(Application.StartupPath + @"\data\se\Start.wav");
+                Additional.PlaySE(Additional.FNseStart);
                 idxAnim++;
             }
             else if (idxAnim == 1)
             {
-                if (Convert.ToInt64(Tick) % DelayStart == 0)
+                if (Convert.ToInt64(Tick) % Additional.Settings.DelayStart == 0)
                     idxAnim++;
             }
             else if (idxAnim == 2)
@@ -441,22 +319,22 @@ namespace KAM_Remake_Launcher
 
         private void btnStartKAM_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             boolBtnStartGameProcess = true;
             btnStartGameProcess = btnStartKAM;
-            StartGame(Settings.FileNameKAM);
+            StartGame(Additional.Settings.FileNameKAM);
         }
 
         private void btnStartKMR_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             if ((int)btnStartKMR.Tag == 0)
             {
-                var frmDownloadProcess = new AL7_frmDownloadProcess();
-                if (frmDownloadProcess.ShowDialog_DownloadProcess("Скачивание и установка игры", Settings) == DialogResult.OK)
+                var frmDownloadProcess = new AL7_frmDownloadUpdateKMR();
+                if (frmDownloadProcess.ShowMyDialog("Скачивание и установка игры", Additional) == DialogResult.OK)
                 {
                     if (SetPathKMR() == true)
-                        PathKMR = Path.GetDirectoryName(Settings.FileNameKMR);
+                        Additional.PathKMR = Path.GetDirectoryName(Additional.Settings.FileNameKMR);
                 }
                 else
                 {
@@ -467,58 +345,82 @@ namespace KAM_Remake_Launcher
             {
                 boolBtnStartGameProcess = true;
                 btnStartGameProcess = btnStartKMR;
-                StartGame(Settings.FileNameKMR);
+                StartGame(Additional.Settings.FileNameKMR);
             }
             else if ((int)btnStartKMR.Tag == 2)
             {
                 if (SetPathKMR() == true)
-                    PathKMR = Path.GetDirectoryName(Settings.FileNameKMR);
+                    Additional.PathKMR = Path.GetDirectoryName(Additional.Settings.FileNameKMR);
             }
 
         }
 
+        private void btnUpdateKMR_Click(object sender, EventArgs e)
+        {
+            Additional.PlaySE(Additional.FNseClick);
+
+            if (Additional.GetNewVersionKMR().ToLower() == Additional.GetVersionKMR().ToLower())
+            {
+                var FrmMessageBox = new AL7_frmMessageBox();
+                FrmMessageBox.ShowMyDialog("Проверка обновления", "У вас последняя версия.\r\nОбновления не требуются!");
+            }
+            else
+            {
+                var frmDownloadProcess = new AL7_frmDownloadUpdateKMR();
+                if (frmDownloadProcess.ShowMyDialog("Скачивание и установка обновления игры", Additional, true) == DialogResult.OK)
+                {
+                    if (SetPathKMR() == true)
+                        Additional.PathKMR = Path.GetDirectoryName(Additional.Settings.FileNameKMR);
+                }
+                else
+                {
+                }
+            }
+        }
+
         private void btnOtherEditorStart_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             pnlOtherEditor.Visible = true;
         }
 
         private void btnStartCampaignBuilder_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             boolBtnStartGameProcess = false;
-            StartGame(PathKMR + @"\" + Settings.FNCampaignBuilder);
+            StartGame(Additional.PathKMR + Additional.KMRLauncher.FNCampaignBuilder);
         }
 
         private void btnStartScriptValidator_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             boolBtnStartGameProcess = false;
-            StartGame(PathKMR + @"\" + Settings.FNScriptValidator);
+            StartGame(Additional.PathKMR + Additional.KMRLauncher.FNScriptValidator);
         }
 
         private void btnStartTranslationManager_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             boolBtnStartGameProcess = false;
-            StartGame(PathKMR + @"\" + Settings.FNTranslationManager);
+            StartGame(Additional.PathKMR + Additional.KMRLauncher.FNTranslationManager);
         }
 
         private void btnClosePnlOtherEditor_Click(object sender, EventArgs e)
         {
-            PlaySE(Application.StartupPath + @"\data\se\Click.wav");
+            Additional.PlaySE(Additional.FNseClick);
             pnlOtherEditor.Visible = false;
-        }
-
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            WriteXml();
         }
 
         private void btnManageCampaigns_Click(object sender, EventArgs e)
         {
+            Additional.PlaySE(Additional.FNseClick);
             var FrmManageCampaigns = new AL7_frmManageCampaigns();
-            FrmManageCampaigns.ShowDialog_ManageCampaigns("Управление кампаниями", Settings);
+            FrmManageCampaigns.ShowMyDialog("Управление кампаниями", Additional);
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Additional = null;
         }
     }
 }

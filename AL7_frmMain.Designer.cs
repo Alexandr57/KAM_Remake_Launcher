@@ -47,6 +47,7 @@
             this.picOtherEditor = new System.Windows.Forms.PictureBox();
             this.btnStartKAM = new System.Windows.Forms.Button();
             this.btnManageCampaigns = new System.Windows.Forms.Button();
+            this.btnUpdateKMR = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Mask)).BeginInit();
@@ -273,11 +274,29 @@
             this.btnManageCampaigns.UseVisualStyleBackColor = false;
             this.btnManageCampaigns.Click += new System.EventHandler(this.btnManageCampaigns_Click);
             // 
+            // btnUpdateKMR
+            // 
+            this.btnUpdateKMR.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdateKMR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateKMR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpdateKMR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnUpdateKMR.ForeColor = System.Drawing.Color.Yellow;
+            this.btnUpdateKMR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateKMR.Location = new System.Drawing.Point(170, 277);
+            this.btnUpdateKMR.Name = "btnUpdateKMR";
+            this.btnUpdateKMR.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUpdateKMR.Size = new System.Drawing.Size(400, 28);
+            this.btnUpdateKMR.TabIndex = 16;
+            this.btnUpdateKMR.Text = "Проверить обновления KAM Remake";
+            this.btnUpdateKMR.UseVisualStyleBackColor = false;
+            this.btnUpdateKMR.Click += new System.EventHandler(this.btnUpdateKMR_Click);
+            // 
             // AL7_frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 480);
+            this.Controls.Add(this.btnUpdateKMR);
             this.Controls.Add(this.btnManageCampaigns);
             this.Controls.Add(this.btnStartKAM);
             this.Controls.Add(this.pnlOtherEditor);
@@ -322,6 +341,7 @@
         private System.Windows.Forms.Button btnClosePnlOtherEditor;
         private System.Windows.Forms.Button btnStartKAM;
         private System.Windows.Forms.Button btnManageCampaigns;
+        private System.Windows.Forms.Button btnUpdateKMR;
     }
 }
 

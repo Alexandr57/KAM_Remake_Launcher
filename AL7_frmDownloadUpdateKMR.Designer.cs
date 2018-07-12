@@ -1,6 +1,6 @@
 ﻿namespace KAM_Remake_Launcher
 {
-    partial class AL7_frmDownloadProcess
+    partial class AL7_frmDownloadUpdateKMR
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AL7_frmDownloadProcess));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AL7_frmDownloadUpdateKMR));
             this.pic_DownloadProcess = new System.Windows.Forms.PictureBox();
             this.pic_WaitDownloadProcess = new System.Windows.Forms.PictureBox();
             this.tlpDownloadProcess = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAutoInstKMR = new System.Windows.Forms.Button();
-            this.btnInstKMR = new System.Windows.Forms.Button();
+            this.btnAutoInstUpdKMR = new System.Windows.Forms.Button();
+            this.btnInstUpdKMR = new System.Windows.Forms.Button();
             this.bprgBar = new ProgressBars.Basic.BasicProgressBar();
             this.lblCaptionDownloadProcess = new System.Windows.Forms.Label();
+            this.lblCaption = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_DownloadProcess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_WaitDownloadProcess)).BeginInit();
             this.tlpDownloadProcess.SuspendLayout();
@@ -69,8 +70,8 @@
             this.tlpDownloadProcess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpDownloadProcess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tlpDownloadProcess.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpDownloadProcess.Controls.Add(this.btnAutoInstKMR, 2, 0);
-            this.tlpDownloadProcess.Controls.Add(this.btnInstKMR, 0, 0);
+            this.tlpDownloadProcess.Controls.Add(this.btnAutoInstUpdKMR, 2, 0);
+            this.tlpDownloadProcess.Controls.Add(this.btnInstUpdKMR, 0, 0);
             this.tlpDownloadProcess.Location = new System.Drawing.Point(0, 60);
             this.tlpDownloadProcess.Margin = new System.Windows.Forms.Padding(0);
             this.tlpDownloadProcess.Name = "tlpDownloadProcess";
@@ -81,38 +82,38 @@
             this.tlpDownloadProcess.Size = new System.Drawing.Size(360, 50);
             this.tlpDownloadProcess.TabIndex = 13;
             // 
-            // btnAutoInstKMR
+            // btnAutoInstUpdKMR
             // 
-            this.btnAutoInstKMR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAutoInstKMR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAutoInstKMR.Enabled = false;
-            this.btnAutoInstKMR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAutoInstKMR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAutoInstKMR.ForeColor = System.Drawing.Color.Yellow;
-            this.btnAutoInstKMR.Image = ((System.Drawing.Image)(resources.GetObject("btnAutoInstKMR.Image")));
-            this.btnAutoInstKMR.Location = new System.Drawing.Point(187, 11);
-            this.btnAutoInstKMR.Name = "btnAutoInstKMR";
-            this.btnAutoInstKMR.Size = new System.Drawing.Size(162, 28);
-            this.btnAutoInstKMR.TabIndex = 11;
-            this.btnAutoInstKMR.Text = "Авто установка";
-            this.btnAutoInstKMR.UseVisualStyleBackColor = true;
+            this.btnAutoInstUpdKMR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAutoInstUpdKMR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAutoInstUpdKMR.Enabled = false;
+            this.btnAutoInstUpdKMR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAutoInstUpdKMR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAutoInstUpdKMR.ForeColor = System.Drawing.Color.Yellow;
+            this.btnAutoInstUpdKMR.Image = ((System.Drawing.Image)(resources.GetObject("btnAutoInstUpdKMR.Image")));
+            this.btnAutoInstUpdKMR.Location = new System.Drawing.Point(187, 11);
+            this.btnAutoInstUpdKMR.Name = "btnAutoInstUpdKMR";
+            this.btnAutoInstUpdKMR.Size = new System.Drawing.Size(162, 28);
+            this.btnAutoInstUpdKMR.TabIndex = 11;
+            this.btnAutoInstUpdKMR.Text = "Авто установка";
+            this.btnAutoInstUpdKMR.UseVisualStyleBackColor = true;
             // 
-            // btnInstKMR
+            // btnInstUpdKMR
             // 
-            this.btnInstKMR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInstKMR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnInstKMR.Enabled = false;
-            this.btnInstKMR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnInstKMR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnInstKMR.ForeColor = System.Drawing.Color.Yellow;
-            this.btnInstKMR.Image = ((System.Drawing.Image)(resources.GetObject("btnInstKMR.Image")));
-            this.btnInstKMR.Location = new System.Drawing.Point(11, 11);
-            this.btnInstKMR.Name = "btnInstKMR";
-            this.btnInstKMR.Size = new System.Drawing.Size(162, 28);
-            this.btnInstKMR.TabIndex = 9;
-            this.btnInstKMR.Text = "Ручная установка";
-            this.btnInstKMR.UseVisualStyleBackColor = true;
-            this.btnInstKMR.Click += new System.EventHandler(this.btnInstKMR_Click);
+            this.btnInstUpdKMR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInstUpdKMR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnInstUpdKMR.Enabled = false;
+            this.btnInstUpdKMR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInstUpdKMR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnInstUpdKMR.ForeColor = System.Drawing.Color.Yellow;
+            this.btnInstUpdKMR.Image = ((System.Drawing.Image)(resources.GetObject("btnInstUpdKMR.Image")));
+            this.btnInstUpdKMR.Location = new System.Drawing.Point(11, 11);
+            this.btnInstUpdKMR.Name = "btnInstUpdKMR";
+            this.btnInstUpdKMR.Size = new System.Drawing.Size(162, 28);
+            this.btnInstUpdKMR.TabIndex = 9;
+            this.btnInstUpdKMR.Text = "Ручная установка";
+            this.btnInstUpdKMR.UseVisualStyleBackColor = true;
+            this.btnInstUpdKMR.Click += new System.EventHandler(this.btnInstUpdKMR_Click);
             // 
             // bprgBar
             // 
@@ -125,7 +126,7 @@
             this.bprgBar.Location = new System.Drawing.Point(0, 333);
             this.bprgBar.Name = "bprgBar";
             this.bprgBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.bprgBar.Size = new System.Drawing.Size(360, 28);
+            this.bprgBar.Size = new System.Drawing.Size(300, 28);
             this.bprgBar.TabIndex = 12;
             this.bprgBar.TextColor = System.Drawing.Color.White;
             this.bprgBar.Value = 50;
@@ -137,29 +138,43 @@
             this.lblCaptionDownloadProcess.ForeColor = System.Drawing.Color.Yellow;
             this.lblCaptionDownloadProcess.Location = new System.Drawing.Point(0, 186);
             this.lblCaptionDownloadProcess.Name = "lblCaptionDownloadProcess";
-            this.lblCaptionDownloadProcess.Size = new System.Drawing.Size(360, 24);
+            this.lblCaptionDownloadProcess.Size = new System.Drawing.Size(300, 24);
             this.lblCaptionDownloadProcess.TabIndex = 15;
             this.lblCaptionDownloadProcess.Text = "Идет процесс скачки";
             this.lblCaptionDownloadProcess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AL7_frmDownloadProcess
+            // lblCaption
+            // 
+            this.lblCaption.BackColor = System.Drawing.Color.Transparent;
+            this.lblCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCaption.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCaption.Location = new System.Drawing.Point(28, 19);
+            this.lblCaption.Name = "lblCaption";
+            this.lblCaption.Size = new System.Drawing.Size(300, 24);
+            this.lblCaption.TabIndex = 16;
+            this.lblCaption.Text = "Ошибка. Игра не найдена.";
+            this.lblCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AL7_frmDownloadUpdateKMR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(360, 397);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCaption);
             this.Controls.Add(this.lblCaptionDownloadProcess);
             this.Controls.Add(this.pic_WaitDownloadProcess);
             this.Controls.Add(this.tlpDownloadProcess);
             this.Controls.Add(this.bprgBar);
             this.Controls.Add(this.pic_DownloadProcess);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AL7_frmDownloadProcess";
+            this.Name = "AL7_frmDownloadUpdateKMR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AL7_frmDownloadProcess";
+            this.Shown += new System.EventHandler(this.AL7_frmDownloadProcess_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pic_DownloadProcess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_WaitDownloadProcess)).EndInit();
             this.tlpDownloadProcess.ResumeLayout(false);
@@ -172,9 +187,10 @@
         private System.Windows.Forms.PictureBox pic_DownloadProcess;
         private System.Windows.Forms.PictureBox pic_WaitDownloadProcess;
         private System.Windows.Forms.TableLayoutPanel tlpDownloadProcess;
-        private System.Windows.Forms.Button btnAutoInstKMR;
-        private System.Windows.Forms.Button btnInstKMR;
+        private System.Windows.Forms.Button btnAutoInstUpdKMR;
+        private System.Windows.Forms.Button btnInstUpdKMR;
         private ProgressBars.Basic.BasicProgressBar bprgBar;
         private System.Windows.Forms.Label lblCaptionDownloadProcess;
+        private System.Windows.Forms.Label lblCaption;
     }
 }

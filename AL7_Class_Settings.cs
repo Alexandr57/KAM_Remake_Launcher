@@ -10,50 +10,25 @@ namespace KAM_Remake_Launcher
         public AL7_Class_Settings()
         {
             //Присваиваем переменным начальные настройки
-            FNKAM = "KM_TPR.exe";
-            FNKMR = "KaM_Remake.exe";
+            
             FileNameKAM = "";
             FileNameKMR = "";
-            FNInstallerKMR = "Install KAM Remake.exe";
-            KMRSite = "http://www.kamremake.com/download/";
-            FNCampaignBuilder = "CampaignBuilder.exe";
-            FNScriptValidator = "ScriptValidator.exe";
-            FNTranslationManager = "TranslationManager.exe";
 
-            //Для автоматического инсталирования KAM Remake
-            AutoInst_DIR = @"C:\Games\KAM Remake";
+            DelayStart = 150;
+            cTick = 10;
         }
 
-        //Возможное имя файла KAM оригинал
-        public string FNKAM { get; set; }
+        public string FileNameKAM;
+        public string FileNameKMR;
 
-        //Возможное имя файла KAM Remake
-        public string FNKMR { get; set; }
+        /// <summary>
+        /// Задержка перед стартом анимации 100 = 1 секунде если брать в расщет интервал 10
+        /// </summary>
+        public int DelayStart = 150;
 
-        //Полное имя файла игры KAM оригинал
-        public string FileNameKAM { get; set; }
-
-        //Полное имя файла игры KAM Remake
-        public string FileNameKMR { get; set; }
-
-        //Имя инсталятора KAM Remake
-        public string FNInstallerKMR { get; set; }
-
-        //Переменная с сайтом KAM Remake
-        public string KMRSite { get; set; }
-
-        //Имя CampaignBuilder
-        public string FNCampaignBuilder { get; set; }
-
-        //Имя ScriptValidator
-        public string FNScriptValidator { get; set; }
-
-        //Имя TranslationManager
-        public string FNTranslationManager { get; set; }
-
-        //Для автоматического инсталирования KAM Remake
-        //Папка куда будет проинсталирована игра
-        public string AutoInst_DIR { get; set; }
-
+        /// <summary>
+        /// Интерал таймера 1000 = 1 секунда. Каждые 10 милисекунд
+        /// </summary>
+        public int cTick = 10;
     }
 }

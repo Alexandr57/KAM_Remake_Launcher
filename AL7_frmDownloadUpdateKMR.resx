@@ -1617,7 +1617,7 @@
         JyjTSc962vOe+MynPi8UAgA7
 </value>
   </data>
-  <data name="btnAutoInstKMR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnAutoInstUpdKMR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA/7JJREFUeF7c/VfbbdtZ3vmuz1Q2zoBQzhIKSCLLZCQkJCSQQASDDTgngknGBoPB
@@ -5471,7 +5471,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="btnInstKMR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnInstUpdKMR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA/7JJREFUeF7c/VfbbdtZ3vmuz1Q2zoBQzhIKSCLLZCQkJCSQQASDDTgngknGBoPB

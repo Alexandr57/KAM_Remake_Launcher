@@ -13,6 +13,7 @@ namespace KAM_Remake_Launcher
         [STAThread]
         static void Main()
         {
+            System.AppDomain.CurrentDomain.UnhandledException += (sender, e) => { if (e.ExceptionObject != null) System.IO.File.AppendAllText(System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Alexandr_77.log"), e.ExceptionObject.ToString() + "\r\n\r\n"); };
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AL7_frmMain());
