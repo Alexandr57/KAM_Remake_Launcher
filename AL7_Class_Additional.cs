@@ -84,7 +84,7 @@ namespace KAM_Remake_Launcher
             if (File.Exists(XMLFileNameSettings))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(AL7_Class_KMRLauncher));
-                TextReader reader = new StreamReader(XMLFileNameKMRLauncher);
+                TextReader reader = new StreamReader(XMLFileNameSettings);
                 KMRLauncher = ser.Deserialize(reader) as AL7_Class_KMRLauncher;
                 reader.Close();
             }

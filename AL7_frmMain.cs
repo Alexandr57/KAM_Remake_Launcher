@@ -197,7 +197,8 @@ namespace KAM_Remake_Launcher
                     {
                         lblKMRVer.Text = "Игра не найдена!";
                         MessageBox.Show("Игра указана неверно!", "Директория игры не найдена", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        if (btnStartKAM.Enabled == false)
+                            Environment.Exit(0);
                         ReGameElements(false);
                         return false;
                     }
@@ -205,7 +206,8 @@ namespace KAM_Remake_Launcher
                 else
                 {
                     ReGameElements(false);
-                    Environment.Exit(0);
+                    if (btnStartKAM.Enabled == false)
+                        Environment.Exit(0);
                     return false;
                 }
             }
